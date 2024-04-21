@@ -1,0 +1,20 @@
+import re
+
+found_mail = open('file-mail.csv', 'w')
+
+filemy =r"C:\Users\Pavel Pablo\Desktop\SearchAndRecovery\tasks\1.2\text2.txt.res"
+
+def find_email_addresses(filemy):
+    with open(filemy, 'r') as file:
+        content = file.read()
+        email_addresses = re.findall(r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b', content)
+        return email_addresses
+
+
+email_addresses = find_email_addresses(filemy)
+
+for email in email_addresses: 
+    print(email)
+    found_mail.write(email + '\n')
+
+found_mail.close();
