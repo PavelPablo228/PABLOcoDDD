@@ -1,0 +1,98 @@
+﻿  Source1.c
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(48,5): warning C4013: strcpy: нет определения; предполагается "extern" с возвратом типа "int"
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(93,5): error C2369: arr: переопределение; различные индексы
+      C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(92,9):
+       см. объявление "arr"
+  
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(94,12): error C2143: синтаксическая ошибка: отсутствие ")" перед "строка"
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(94,12): error C2143: синтаксическая ошибка: отсутствие "{" перед "строка"
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(94,12): error C2059: синтаксическая ошибка: строка
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(94,26): error C2059: синтаксическая ошибка: )
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(97,9): error C2466: невозможно выделить память для массива постоянного нулевого размера
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(97,5): warning C4142: "num": неопасное переопределение типа
+      C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(96,11):
+       см. объявление "num"
+  
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(97,14): error C2075: "num": для инициализации требуется список инициализаторов, заключенный в фигурные скобки.
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(98,5): error C2369: num: переопределение; различные индексы
+      C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(97,5):
+       см. объявление "num"
+  
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(99,5): error C2369: num: переопределение; различные индексы
+      C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(97,5):
+       см. объявление "num"
+  
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(104,5): error C2369: word: переопределение; различные индексы
+      C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(102,10):
+       см. объявление "word"
+  
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(105,12): error C2143: синтаксическая ошибка: отсутствие ")" перед "строка"
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(105,12): error C2143: синтаксическая ошибка: отсутствие "{" перед "строка"
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(105,12): error C2059: синтаксическая ошибка: строка
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(105,24): error C2059: синтаксическая ошибка: )
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(114,5): error C2369: array: переопределение; различные индексы
+      C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(107,9):
+       см. объявление "array"
+  
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(115,12): error C2143: синтаксическая ошибка: отсутствие ")" перед "строка"
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(115,12): error C2143: синтаксическая ошибка: отсутствие "{" перед "строка"
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(115,12): error C2059: синтаксическая ошибка: строка
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(115,31): error C2059: синтаксическая ошибка: )
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(119,5): error C2059: синтаксическая ошибка: if
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(122,5): error C2059: синтаксическая ошибка: else
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(127,5): error C2059: синтаксическая ошибка: else
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(132,5): error C2059: синтаксическая ошибка: if
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(134,5): error C2059: синтаксическая ошибка: else
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(140,5): error C2059: синтаксическая ошибка: switch
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(163,5): error C2059: синтаксическая ошибка: for
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(163,26): error C2143: синтаксическая ошибка: отсутствие "{" перед ">"
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(163,26): error C2059: синтаксическая ошибка: >
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(163,34): error C2143: синтаксическая ошибка: отсутствие "{" перед "/="
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(163,34): error C2059: синтаксическая ошибка: /=
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(163,38): error C2059: синтаксическая ошибка: )
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(169,5): error C2059: синтаксическая ошибка: while
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(178,5): error C2059: синтаксическая ошибка: while
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(183,10): error C2374: NUM: переопределение; множественная инициализация
+      C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(167,10):
+       см. объявление "NUM"
+  
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(184,5): error C2059: синтаксическая ошибка: do
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(186,7): error C2059: синтаксическая ошибка: while
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(188,5): error C2059: синтаксическая ошибка: for
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(188,23): error C2143: синтаксическая ошибка: отсутствие "{" перед "<"
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(188,23): error C2059: синтаксическая ошибка: <
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(188,29): error C2143: синтаксическая ошибка: отсутствие "{" перед "++"
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(188,29): error C2059: синтаксическая ошибка: ++
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(188,31): error C2059: синтаксическая ошибка: )
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(198,9): error C2374: arr: переопределение; множественная инициализация
+      C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(92,9):
+       см. объявление "arr"
+  
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(199,5): error C2059: синтаксическая ошибка: for
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(199,23): error C2143: синтаксическая ошибка: отсутствие "{" перед "<="
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(199,23): error C2059: синтаксическая ошибка: <=
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(199,30): error C2143: синтаксическая ошибка: отсутствие "{" перед "++"
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(199,30): error C2059: синтаксическая ошибка: ++
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(199,32): error C2059: синтаксическая ошибка: )
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(202,12): error C2143: синтаксическая ошибка: отсутствие ")" перед "строка"
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(202,12): error C2143: синтаксическая ошибка: отсутствие "{" перед "строка"
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(202,12): error C2059: синтаксическая ошибка: строка
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(202,16): error C2059: синтаксическая ошибка: )
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(203,9): error C2099: инициализатор не является константой
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(204,9): error C2099: инициализатор не является константой
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(205,5): error C2059: синтаксическая ошибка: for
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(205,23): error C2143: синтаксическая ошибка: отсутствие "{" перед "<="
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(205,23): error C2059: синтаксическая ошибка: <=
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(205,30): error C2143: синтаксическая ошибка: отсутствие "{" перед "++"
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(205,30): error C2059: синтаксическая ошибка: ++
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(205,32): error C2059: синтаксическая ошибка: )
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(211,12): error C2143: синтаксическая ошибка: отсутствие ")" перед "строка"
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(211,12): error C2143: синтаксическая ошибка: отсутствие "{" перед "строка"
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(211,12): error C2059: синтаксическая ошибка: строка
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(211,32): error C2059: синтаксическая ошибка: )
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(212,12): error C2143: синтаксическая ошибка: отсутствие ")" перед "строка"
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(212,12): error C2143: синтаксическая ошибка: отсутствие "{" перед "строка"
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(212,12): error C2059: синтаксическая ошибка: строка
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(212,32): error C2059: синтаксическая ошибка: )
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(216,5): error C2059: синтаксическая ошибка: return
+C:\Users\Pavel Pablo\source\repos\Project1.1.1\Source1.c(217,1): error C2059: синтаксическая ошибка: }
