@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  tata1:
+    container_name: "tata1"
+    build: .
+    ports:
+      - 8888:8888
+    env_file: ".env"
+    restart: always
+    networks:
+      - net1
+
+  redis:
+      container_name: "redistata1"
+      ports:
+        - 6380:6379
+      image: redis:7-alpine
+      volumes:
+        - redis_data:/data
+      networks:
+        - net1
+
+volumes:
+  redis_data:
+
+networks:
+  net1:
+    driver: 
+      bridge
