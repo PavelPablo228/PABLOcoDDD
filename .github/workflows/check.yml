@@ -4,9 +4,10 @@ jobs:
   lint: 
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
       - name: Install deps
         run: npm ci 
-      - name: Link
+      - name: Lint
         run: npm run lint
         
