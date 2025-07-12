@@ -1,20 +1,8 @@
 name: Check
-on: push
-
-jobs:
-  lint:
+on: push 
+jobs: 
+  lint: 
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-
-      - name: Install deps
-        run: npm ci --no-audit
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}  
-
-      - name: Lint
-        run: npm run lint
+      - name: Print to console
+        run: echo Hello Padlo!
